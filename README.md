@@ -94,19 +94,4 @@ A planilha gerada consolida os itens de todas as notas fiscais em formato tabula
 | 1234            | EMPRESA EXEMPLO LTDA | VENDA DE MERCADORIA | PRODUTO A   | 2.0            | 50.00              | 100.00         | 250.00               |
 | 1234            | EMPRESA EXEMPLO LTDA | VENDA DE MERCADORIA | PRODUTO B   | 1.0            | 150.00             | 150.00         | 250.00               |
 
-##  Decisões Técnicas e Limitações
-
-- **Funções de Extração Defensivas (`get_text` e `get_float`):** Optou-se por criar funções auxiliares para centralizar a busca de nós no XML. Isso evita que a ausência de uma tag opcional gere erros fatais de `AttributeError` durante a execução em lote.
-- **Caminhos Absolutos Dinâmicos:** O uso de `os.path.dirname(os.path.abspath(__file__))` garante robustez, evitando erros de arquivo não encontrado quando o script é executado a partir de terminais abertos em diretórios diferentes.
-- **Limitação Atual:** O projeto processa arquivos XML locais em lote estático e não faz validação estrutural profunda contra esquemas XSD da SEFAZ, focando exclusivamente na extração dos campos de interesse prático para relatórios.
-
-##  Possíveis Melhorias Futuras
-
-*(Funcionalidades planejadas para evolução do projeto, ainda não implementadas)*:
-
-- [ ] Implementação de logs estruturados (`logging`) para auditoria detalhada de arquivos com falha de leitura.
-- [ ] Validação rigorosa de campos obrigatórios do cabeçalho antes da consolidação.
-- [ ] Criação de um relatório de erros isolado para XMLs corrompidos ou fora do padrão.
-- [ ] Mecanismo de prevenção de duplicidade baseado na Chave de Acesso da NF-e (`chNFe`).
-- [ ] Integração com banco de dados relacional (SQLite ou PostgreSQL) para persistência dos dados fiscais.
 
